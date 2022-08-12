@@ -16,7 +16,7 @@ button.addEventListener('click',(e) =>{
         }
         return;
     }
-    window.location.href = "http://127.0.0.1:5500/home.html";
+    window.location.href = "https://melissagaleano.github.io/home.html";
 });
 
 email.addEventListener('keydown', () => {
