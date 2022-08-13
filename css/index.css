@@ -49,3 +49,12 @@ img{
     background-position: right calc(.375em + .1875rem) center;
     background-size: calc(.75em + .375rem) calc(.75em + .375rem);
 }
+
+.botones{
+    display: flex;
+    align-items: center;
+}
+
+.abcRioButtonLightBlue{
+    width: 35px !important;
+}
