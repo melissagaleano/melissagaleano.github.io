@@ -1,56 +1,39 @@
-
 const button = document.querySelector('.btn-login');
 const email = document.querySelector('.email');
 const pass = document.querySelector('.pass');
-const invalid = document.querySelectorAll('.invalid-feedback');
+const invalid = document.getElementsByClassName('invalid-feedback');
 
 button.addEventListener('click',(e) =>{
-    e.preventDefault();
+    e.preventDefault();  //previene que el formulario se envie por defecto 
     
-    if([email.value, pass.value].includes("") ){
+    if([email.value, pass.value].includes("") ){  
         email.classList.add('form-control')
         pass.classList.add('form-control')
 
-        for (let i =0; i < 3; i++){
+        for (let i =0; i < invalid.length; i++){
             invalid[i].style.display = 'block';
         }
+        /* invalid.map( item => (
+            item.style.display = "block"
+        )) */
+
         return;
     }
     window.location.href = "https://melissagaleano.github.io/home.html";
 });
 
 email.addEventListener('keydown', () => {
-    if(email.value !== '') {
-        email.classList.remove('form-control')
-        for (let i =0; i < 3; i++){
-            invalid[0].style.display = 'none';
-        }
-    } else if(email.value == '') {
-        email.classList.add('form-control')
-        for (let i =0; i < 3; i++){
-            invalid[0].style.display = 'block';
-    }}
+    let style = 'none'
+    email.value !== '' ? email.classList.remove('form-control') : style = 'block';
+    invalid[0].style.display = style;
 })
-
 
 pass.addEventListener('keydown', () => {
-    if(pass.value !== '') {
-        pass.classList.remove('form-control')
-        for (let i =0; i < 3; i++){
-            invalid[1].style.display = 'none';
-        }
-    } else if(pass.value == ''){
-        pass.classList.add('form-control')
-        for (let i =0; i < 3; i++){
-            invalid[1].style.display = 'block';
-        }
-    }
-})
+    let style = 'none'
+    pass.value !== '' ? pass.classList.remove('form-control') : style = 'block';
+    invalid[1].style.display = style;
+}) 
 
-function onSignIn(googleUser) {
-    var profile = googleUser.getBasicProfile();
-    console.log('ID: ' + profile.getId()); // Do not send to your backend! Use an ID token instead.
-    console.log('Name: ' + profile.getName());
-    console.log('Image URL: ' + profile.getImageUrl());
-    console.log('Email: ' + profile.getEmail()); // This is null if the 'email' scope is not present.
+function handleCredentialResponse() {
+    window.location.href = 'https://melissagaleano.github.io/home.html'
 }
