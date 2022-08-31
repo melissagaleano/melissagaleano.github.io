@@ -1,44 +1,99 @@
-let list = [];
-const containerProducts = document.querySelector('.container-products')
-let htmlContentToAppend = "";
+let lista = [];
+const ls = localStorage.getItem('catID')
+const cat = ls == 101 ? { id: 101, name: 'Autos' } : ls == 102 ? { id: 102, name: 'Juguetes' } : { id: 103, name: 'Muebles' };
+const containerProducts = document.getElementById('container-products');
 
-const fetchApi = async () =>{
-    const product = "https://japceibal.github.io/emercado-api/cats_products/101.json";
-    await fetch(product)
+const fetchAPI = async () => {
+    const url = `https://japceibal.github.io/emercado-api/cats_products/${cat.id}.json`
+    await fetch(url)
         .then(response => response.json())
-        .then(data => list = data.products);
-    showCategoriesList();
+        .then(data => {lista = data.products; showCategoriesList(lista)});
 }
-fetchApi();
+fetchAPI();
 
-
-const showCategoriesList = () =>{
-    console.log(list);
-    
-    list.map(product => (
-        htmlContentToAppend += `
-        <div class="list-group-item list-group-item-action">
-            <div class="row">
-                <div class="col-3">
-                    <img src="` + product.image+ `" alt="product image" class="img-thumbnail">
-                </div>
-                <div class="col">
-                    <div class="d-flex w-100 justify-content-between">
-                        <div class="mb-1">
-                            <h4>`+ product.name + ' - USD ' + product.cost + `</h4> 
-                            <p> `+ product.description +`</p> 
+function showCategoriesList(array) {
+    let html = '';
+    array.map(item => {
+        html +=
+            ` 
+                <div class="list-group-item list-group-item-action">
+                    <div class="row">
+                        <div class="col-3">
+                            <img src="` + item.image + `" alt="product image" class="img-thumbnail">
                         </div>
-                        <small class="text-muted">` + product.soldCount + ` vendidos</small> 
-                    </div>
+                        <div class="col">
+                            <div class="d-flex w-100 justify-content-between">
+                                <div class="mb-1">
+                                    <h4>`+ item.name + ' - USD ' + item.cost + `</h4> 
+                                    <p> `+ item.description + `</p> 
+                                </div>
+                                <small class="text-muted">` + item.soldCount + ` vendidos</small> 
+                            </div>
 
+                        </div>
+                    </div>
                 </div>
-            </div>
-        </div>
-        `
-        
-    ))
-    console.log(htmlContentToAppend);
-    
-    containerProducts.innerHTML = htmlContentToAppend; 
+            `
+    })
+    console.log(html)
+    containerProducts.innerHTML = html;
 }
 
+function sortDec() {
+    const array = lista;
+
+    array.sort(function(a, b) {
+        if (a.cost < b.cost) {
+            return -1;
+        }
+        if (a.cost > b.cost) {
+            return 1;
+        }
+        // a must be equal to b
+        return 0;
+    })
+
+    showCategoriesList(array)
+}
+
+function sortAsc() {
+    const array = lista;
+
+    array.sort(function (a, b) {
+        if (a.cost > b.cost) {
+            return -1;
+        }
+        if (a.cost < b.cost) {
+            return 1;
+        }
+        // a must be equal to b
+        return 0;
+    })
+
+    showCategoriesList(array)
+}
+
+function sortRel() {
+    const array = lista;
+
+    array.sort(function (a, b) {
+        if (a.soldCount > b.soldCount) {
+            return -1;
+        }
+        if (a.soldCount < b.soldCount) {
+            return 1;
+        }
+        // a must be equal to b
+        return 0;
+    })
+
+    showCategoriesList(array)
+}
+
+function sortPrice() {
+    const filterMin = document.getElementById('filterMin').value;
+    const filterMax = document.getElementById('filterMax').value;
+
+    const array = lista.filter( item => item.cost >= filterMin && item.cost <= filterMax );
+    showCategoriesList(array)
+}

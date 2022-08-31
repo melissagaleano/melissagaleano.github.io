@@ -12,3 +12,10 @@ document.addEventListener("DOMContentLoaded", function(){
         window.location = "products.html"
     });
 });
+
+let storage = localStorage.getItem('email');
+
+const emailStorage = document.getElementById('email');
+
+emailStorage.innerHTML = storage;
+

@@ -11,6 +11,7 @@
   <link href="css/bootstrap.min.css" rel="stylesheet">
   <link href="css/styles.css" rel="stylesheet">
   <link href="css/products.css" rel="stylesheet">
+  <link href="https://site-assets.fontawesome.com/releases/v6.1.2/css/all.css" rel="stylesheet"></link>
 </head>
 
 <body>
@@ -23,7 +24,7 @@
       <div class="collapse navbar-collapse" id="navbarNav">
         <ul class="navbar-nav w-100 justify-content-between">
           <li class="nav-item">
-            <a class="nav-link" href="index.html">Inicio</a>
+            <a class="nav-link" href="home.html">Inicio</a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="categories.html">Categorías</a>
@@ -40,8 +41,34 @@
   <main class="pb-5 container">
     <div class="container">
       <h1>Productos</h1>
-      <h3>Verás aqui todos los productos de la categoria Autos</h3>
-      <div class="container-products">
+      <h3 id="subtitle"></h3>
+
+        <div class="container-filter">
+          <div class="filter-icons">
+              <div id="menor" onclick="sortDec()">
+                <i class="fas fa-arrow-down-wide-short"></i>
+                <span>$</span>
+              </div>
+              <div onclick="sortAsc()">
+                <i id="mayor" class="fas fa-arrow-up-wide-short"></i>
+                <span>$</span>
+              </div>
+              <div onclick="sortRel()">
+                <i id="rel" class="fas fa-arrow-down-wide-short"></i>
+                <span>Rel.</span>
+              </div>
+          </div>
+          <div class="filter-input">
+              <div>Precio</div>
+              <input type="text" value="2500" id="filterMin">
+              <input type="text" value="15000" id="filterMax">
+              <button id="buttonFilter" onclick="sortPrice()">Filtrar</button>
+              <button id="buttonClear" onclick="showCategoriesList(lista)">Limpiar</button>
+          </div>
+
+      </div>
+
+      <div class="container-products" id="container-products">
         
       </div>
 
