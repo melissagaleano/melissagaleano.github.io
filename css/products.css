@@ -69,3 +69,28 @@ input{
     background-color: #fbdada;
     transform: scale(1.08);
 }
+
+.container-search{
+    text-align: center;
+}
+
+.search{
+    width: 30%;
+
+}
+
+.container-search button{
+    background-color: #f9fafb;
+    padding: 5px 10px;
+    
+    border: none;
+    border-radius: 5px;
+    box-shadow: 0px 0px 10px 0px rgba(0,0,0,.2);
+    cursor: pointer;
+    transition: all .2s ;
+}
+
+.container-search button:hover{
+    background-color: #dedede;
+    transform: scale(1.08);
+}

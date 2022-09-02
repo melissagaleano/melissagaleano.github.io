@@ -65,7 +65,14 @@
               <button id="buttonFilter" onclick="sortPrice()">Filtrar</button>
               <button id="buttonClear" onclick="showCategoriesList(lista)">Limpiar</button>
           </div>
-
+          <form action="" id="search-form" >
+            <div class="container-search"> 
+              <label for="site-search">Buscador:</label>
+              <input  type="search" id="siteSearch" name="q" onkeyup="Search()" >
+              
+            </div>
+          </form>
+          
       </div>
 
       <div class="container-products" id="container-products">

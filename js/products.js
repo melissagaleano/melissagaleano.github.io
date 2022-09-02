@@ -3,6 +3,8 @@ const ls = localStorage.getItem('catID')
 const cat = ls == 101 ? { id: 101, name: 'Autos' } : ls == 102 ? { id: 102, name: 'Juguetes' } : { id: 103, name: 'Muebles' };
 const containerProducts = document.getElementById('container-products');
 
+
+
 const fetchAPI = async () => {
     const url = `https://japceibal.github.io/emercado-api/cats_products/${cat.id}.json`
     await fetch(url)
@@ -35,7 +37,7 @@ function showCategoriesList(array) {
                 </div>
             `
     })
-    console.log(html)
+    // console.log(html)
     containerProducts.innerHTML = html;
 }
 
@@ -56,44 +58,61 @@ function sortDec() {
     showCategoriesList(array)
 }
 
-function sortAsc() {
-    const array = lista;
+    function sortAsc() {
+        const array = lista;
 
-    array.sort(function (a, b) {
-        if (a.cost > b.cost) {
-            return -1;
-        }
-        if (a.cost < b.cost) {
-            return 1;
-        }
-        // a must be equal to b
-        return 0;
-    })
+        array.sort(function (a, b) {
+            if (a.cost > b.cost) {
+                return -1;
+            }
+            if (a.cost < b.cost) {
+                return 1;
+            }
+            // a must be equal to b
+            return 0;
+        })
 
-    showCategoriesList(array)
-}
+        showCategoriesList(array)
+    }
 
-function sortRel() {
-    const array = lista;
+    function sortRel() {
+        const array = lista;
 
-    array.sort(function (a, b) {
-        if (a.soldCount > b.soldCount) {
-            return -1;
-        }
-        if (a.soldCount < b.soldCount) {
-            return 1;
-        }
-        // a must be equal to b
-        return 0;
-    })
+        array.sort(function (a, b) {
+            if (a.soldCount > b.soldCount) {
+                return -1;
+            }
+            if (a.soldCount < b.soldCount) {
+                return 1;
+            }
+            // a must be equal to b
+            return 0;
+        })
 
-    showCategoriesList(array)
-}
+        showCategoriesList(array)
+    }
 
-function sortPrice() {
-    const filterMin = document.getElementById('filterMin').value;
-    const filterMax = document.getElementById('filterMax').value;
+    function sortPrice() {
+        const filterMin = document.getElementById('filterMin').value;
+        const filterMax = document.getElementById('filterMax').value;
 
-    const array = lista.filter( item => item.cost >= filterMin && item.cost <= filterMax );
-    showCategoriesList(array)
-}
+        const array = lista.filter( item => item.cost >= filterMin && item.cost <= filterMax );
+        showCategoriesList(array)
+    }
+
+    
+    function Search(){
+        let filterProduct = [];
+        
+      const inputSearch = document.getElementById('siteSearch').value;
+      lista.map(product => {
+        
+          if (product.name.indexOf(inputSearch) >= 0 || product.description.indexOf(inputSearch) >= 0 ){
+            filterProduct = [...filterProduct, product]
+            showCategoriesList(filterProduct)
+    
+          }
+          
+      })
+    }
+    

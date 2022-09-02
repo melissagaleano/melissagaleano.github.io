@@ -18,7 +18,7 @@ button.addEventListener('click',(e) =>{
 
     let storage = localStorage.setItem('email',email.value);
 
-    window.location.href = "https://melissagaleano.github.io/home.html"; //redirecciona si la condicion no se cumple
+    window.location.href = "home.html"; //redirecciona si la condicion no se cumple
     // window.location.href = "http://127.0.0.1:5501/home.html";
 });
 
@@ -35,7 +35,7 @@ pass.addEventListener('keydown', () => {
 }) 
 
 function handleCredentialResponse() {
-    window.location.href = 'https://melissagaleano.github.io/home.html'
+    window.location.href = 'home.html'
 }
 
 localStorage.setItem('email',email.value);
