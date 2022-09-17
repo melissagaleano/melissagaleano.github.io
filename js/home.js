@@ -18,4 +18,3 @@ let storage = localStorage.getItem('email');
 const emailStorage = document.getElementById('email');
 
 emailStorage.innerHTML = storage;
-

@@ -18,7 +18,7 @@ function showCategoriesList(array) {
     array.map(item => {
         html +=
             ` 
-                <div class="list-group-item list-group-item-action">
+                <div class="list-group-item list-group-item-action" id="${item.id}" onclick="productInfo(event)">
                     <div class="row">
                         <div class="col-3">
                             <img src="` + item.image + `" alt="product image" class="img-thumbnail">
@@ -37,7 +37,7 @@ function showCategoriesList(array) {
                 </div>
             `
     })
-    // console.log(html)
+
     containerProducts.innerHTML = html;
 }
 
@@ -99,7 +99,6 @@ function sortDec() {
         const array = lista.filter( item => item.cost >= filterMin && item.cost <= filterMax );
         showCategoriesList(array)
     }
-
     
     function Search(){
         let filterProduct = [];
@@ -116,3 +115,9 @@ function sortDec() {
       })
     }
     
+   
+   function productInfo(elemento){
+        const id = elemento.srcElement.offsetParent.id
+        localStorage.setItem('idProduct', id);
+        window.location = "product-info.html"
+    }
