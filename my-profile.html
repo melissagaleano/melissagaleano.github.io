@@ -36,7 +36,7 @@
       <div class="collapse navbar-collapse" id="navbarNav">
         <ul class="navbar-nav w-100 justify-content-between">
           <li class="nav-item">
-            <a class="nav-link" href="index.html">Inicio</a>
+            <a class="nav-link active" href="home.html">Inicio</a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="categories.html">Categorías</a>
@@ -44,7 +44,13 @@
           <li class="nav-item">
             <a class="nav-link" href="sell.html">Vender</a>
           </li>
-          <li class="nav-item">
+          <li class="nav-item" onclick="userMenu()">
+              <p class="nav-link" id="email" ></p>
+              <div class="container-menu none" id="menuUser">
+                <a href="cart.html">Mi Carrito</a>
+                <a href="my-profile.html">Mi Perfil</a>
+                <a href="index.html" onclick="logout()">Cerrar Sesión</a>
+              </div>
           </li>
         </ul>
       </div>
@@ -69,6 +75,7 @@
   </footer>
   <script src="js/bootstrap.bundle.min.js"></script>
   <script src="js/init.js"></script>
+  <script src="js/home.js"></script>
   <script src="js/my-profile.js"></script>
 </body>
 

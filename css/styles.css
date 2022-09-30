@@ -188,3 +188,37 @@ a.custom-card:hover {
 .checked {
   color: orange;
 }
+
+/* Navar información usuario */
+
+
+#email:hover{
+  cursor: pointer;
+}
+
+.container-menu{
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  right: 0;
+  background-color: #212529;
+  padding: 20px 40px;
+}
+
+.container-menu a {
+  color:rgba(255,255,255,.55);
+  text-decoration: none;
+  white-space: nowrap;
+}
+
+.container-menu a:hover{
+  color: white;
+}
+
+.none{
+  display: none;
+}
+
+.nav-item{
+  position: relative;
+}

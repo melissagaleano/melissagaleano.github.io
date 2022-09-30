@@ -93,6 +93,6 @@ function createCom(){
     const product = localStorage.getItem('idProduct')
     const newComment = {user, description, score, dateTime, product}
     comments.push(newComment)
+    
     showCategoriesComment(comments)
 }
-

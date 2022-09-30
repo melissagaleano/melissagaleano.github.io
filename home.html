@@ -29,13 +29,22 @@
           <li class="nav-item">
             <a class="nav-link" href="sell.html">Vender</a>
           </li>
-          <li class="nav-item" >
-            <p class="nav-link" id="email"></p>
+          <li class="nav-item" onclick="userMenu()">
+            
+              <p class="nav-link" id="email" ></p>
+              <div class="container-menu none" id="menuUser">
+                <a href="cart.html">Mi Carrito</a>
+                <a href="my-profile.html">Mi Perfil</a>
+                <a href="index.html" onclick="logout()">Cerrar Sesión</a>
+              </div>
           </li>
         </ul>
       </div>
     </div>
   </nav>
+
+  
+
   <main>
     <div class="jumbotron text-center"></div>
     <div class="album py-5 bg-light">

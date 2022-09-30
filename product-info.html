@@ -16,27 +16,33 @@
 <body>
   <nav class="navbar navbar-expand-lg navbar-dark bg-dark p-1">
     <div class="container">
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
-          aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarNav">
-            <ul class="navbar-nav w-100 justify-content-between">
-                <li class="nav-item">
-                  <a class="nav-link" href="index.html">Inicio</a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link" href="categories.html">Categorías</a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link" href="sell.html">Vender</a>
-                </li>
-                  <li class="nav-item">
-                </li>
-            </ul>
-        </div>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+        aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav w-100 justify-content-between">
+          <li class="nav-item">
+            <a class="nav-link active" href="home.html">Inicio</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="categories.html">Categorías</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="sell.html">Vender</a>
+          </li>
+          <li class="nav-item" onclick="userMenu()">
+              <p class="nav-link" id="email" ></p>
+              <div class="container-menu none" id="menuUser">
+                <a href="cart.html">Mi Carrito</a>
+                <a href="my-profile.html">Mi Perfil</a>
+                <a href="index.html" onclick="logout()">Cerrar Sesión</a>
+              </div>
+          </li>
+        </ul>
+      </div>
     </div>
-  </nav> 
+  </nav>
   <main>
     <div id="container">
       
@@ -88,6 +94,7 @@
   <script src="js/bootstrap.bundle.min.js"></script>
   <script src="js/init.js"></script>
   <script src="js/product-info.js"></script>
+  <script src="js/home.js"></script>
 </body>
 
 </html>
