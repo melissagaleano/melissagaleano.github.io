@@ -6,25 +6,32 @@ let idProduct = localStorage.getItem('idProduct');
 const ls = localStorage.getItem('catID')
 const cat = ls == 101 ? { id: 101, name: 'Autos' } : ls == 102 ? { id: 102, name: 'Juguetes' } : { id: 103, name: 'Muebles' };
 
-
-
-
-
 const fetchAPI = async () => {
     const url = `https://japceibal.github.io/emercado-api/cats_products/${cat.id}.json`
     const url2 = `https://japceibal.github.io/emercado-api/products_comments/${idProduct}.json`
     Promise.all([
         fetch(url)
         .then(response => response.json())
-        .then(data => {lista = data.products; showCategoriesList(lista)})
+        .then(data => {lista = data.products; showCategoriesList(lista); {
+            const container = document.getElementById('otherProducts');
+            let html = '';
+            const actual = lista.filter(item => item.id != Number(idProduct));
+            for(let i = 0; i < actual.length; i++) {
+                html += `
+                    <div class="product ${actual[i].id}" onclick="redirectProduct(event)">
+                        <img src="${actual[i].image}" />
+                        <div>${actual[i].name}</div>
+                    </div>
+                `
+            }
+            container.innerHTML = html
+        }})
     ], [fetch(url2)
         .then(response => response.json())
         .then(data => {comments = data; showCategoriesComment(comments)})
     ])
-   
 }
 fetchAPI();
-
 
 function showCategoriesList(array) {
     let html = '';
@@ -95,4 +102,10 @@ function createCom(){
     comments.push(newComment)
     
     showCategoriesComment(comments)
+}
+
+function redirectProduct(element) {
+    const idProduct = element.path[1].classList[1];
+    localStorage.setItem('idProduct', idProduct)
+    window.location.href = "product-info.html";
 }

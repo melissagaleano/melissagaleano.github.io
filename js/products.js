@@ -10,6 +10,7 @@ const fetchAPI = async () => {
     await fetch(url)
         .then(response => response.json())
         .then(data => {lista = data.products; showCategoriesList(lista)});
+    console.log(lista)
 }
 fetchAPI();
 
