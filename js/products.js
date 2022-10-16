@@ -10,7 +10,7 @@ const fetchAPI = async () => {
     await fetch(url)
         .then(response => response.json())
         .then(data => {lista = data.products; showCategoriesList(lista)});
-    console.log(lista)
+   
 }
 fetchAPI();
 
@@ -118,7 +118,12 @@ function sortDec() {
     
    
    function productInfo(elemento){
-        const id = elemento.srcElement.offsetParent.id
-        localStorage.setItem('idProduct', id);
+        let elementId = elemento.srcElement.offsetParent.id
+        localStorage.setItem('idProduct', elementId);
+
+        const cartProduct = lista.filter(item => item.id == elementId)[0]
+        const { name, cost:unitCost, image, id} = cartProduct
+        
+        localStorage.setItem('actualProduct', JSON.stringify({name, unitCost, image, id, count:1}));
         window.location = "product-info.html"
     }

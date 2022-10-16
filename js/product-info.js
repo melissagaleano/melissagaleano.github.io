@@ -40,8 +40,12 @@ function showCategoriesList(array) {
 
         html =
             `<div style="padding:0 400px">
-                <h2 class="mt-4 ">${item[0]?.name}</h2><br><hr>
                 
+                <div class="mt-4 button">
+                    <h2>${item[0]?.name}</h2><br>
+                    <button onclick="productCart()">Agregar al carrito</button>
+                </div>
+                <hr>
                 
                 <div class="font-weight-bold" >Precio</div>
                 <p>${item[0]?.cost}</p>
@@ -109,3 +113,23 @@ function redirectProduct(element) {
     localStorage.setItem('idProduct', idProduct)
     window.location.href = "product-info.html";
 }
+
+function productCart(){
+    const cart = JSON.parse(localStorage.getItem('cart')) || []
+    const actualProduct = JSON.parse(localStorage.getItem('actualProduct'))
+    
+    const countProduct = cart.filter(item => item.id === actualProduct.id)
+    if(countProduct.length === 0) {
+        let newCart = [...cart, actualProduct];
+        localStorage.setItem('cart', JSON.stringify(newCart))
+        window.location = "cart.html"
+        return;
+    }
+    
+    actualProduct.count = actualProduct.count + 1;
+    const cartElements = cart.filter(item => item.id !== actualProduct.id);
+    let newCart = [...cartElements, actualProduct];
+    localStorage.setItem('cart', JSON.stringify(newCart))
+    window.location = "cart.html"
+}
+
