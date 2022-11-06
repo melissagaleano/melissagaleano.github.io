@@ -5,6 +5,14 @@
   font-family: 'Raleway', serif !important;
 }
 
+input {
+  outline: none;
+}
+
+.pointer {
+  cursor: pointer;
+}
+
 .jumbotron .display-4 {
   font-weight: bold;
 }

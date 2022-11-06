@@ -43,7 +43,7 @@ function showCategoriesList(array) {
                 
                 <div class="mt-4 button">
                     <h2>${item[0]?.name}</h2><br>
-                    <button onclick="productCart()">Agregar al carrito</button>
+                    <button class="add-cart pointer" onclick="productCart()">Agregar al carrito</button>
                 </div>
                 <hr>
                 
